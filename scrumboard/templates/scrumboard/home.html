@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScrumBoard</title>
+</head>
+<body ng-app="scrumboard.demo">
+    {% verbatim %}
+    <div ng-controller="ScrumboardController">
+        {{ person.name }} is {{ person.age }} years old
+    </div>
+    {% endverbatim %}
+
+    <script src="{% static 'scrumboard/js/angular.min.js' %}"></script>
+    <script>
+        (function(){
+            'ues strict';
+
+            angular.module('scrumboard.demo', [])
+                .controller('ScrumboardController', ['$scope', ScrumboardController]);
+
+            function ScrumboardController($scope) {
+                $scope.person = {
+                    name: 'Joe',
+                    age: 35
+                };
+            }
+
+        }());
+    </script>
+</body>
+</html>
