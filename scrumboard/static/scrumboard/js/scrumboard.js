@@ -20,8 +20,20 @@
 
         };
 
-        $scope.data = [];
+        $scope.login = function() {
+            $http.post('/auth_api/login/',
+                {username: 'shireenrao', password: '0987qwer'})
+                .then(
+                    function (response) {
+                        alert('success.. refresh screen!');
+                    },
+                    function () {
+                        alert('failure');
+                    }
+                );
+        };
 
+        $scope.data = [];
         $http.get('/scrumboard/lists/').then(function(response) {
             $scope.data = response.data;
         });
